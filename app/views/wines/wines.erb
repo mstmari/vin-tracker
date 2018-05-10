@@ -1,2 +1,10 @@
 <h1>Your Favorite Wines</h1>
-<p><a href="/logout"> Logout</a></p>
+<br>
+<% Wine.all.each do |wine| %>
+<ol>
+  <li><a href="/wines"><%= wine.name %></a></li>
+  <% end %>
+</ol>
+<br>
+<p><a href="/logout"> Logout</a></p><br>
+<p><a href="/wines/create"> Add a wine</a></p>

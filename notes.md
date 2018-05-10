@@ -1,5 +1,7 @@
 font-family: 'Nunito', sans-serif;
 font-family: 'Roboto Slab', serif;
+font-family: 'Inconsolata', monospace;
+font-family: 'Lobster', cursive;
 
 
 

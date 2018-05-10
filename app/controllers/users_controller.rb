@@ -3,16 +3,16 @@ class UserController < ApplicationController
 
   get '/signup' do
 
-  # if session[:user_id]
-  #    redirect '/wines'
-  #  end
+  if session[:user_id]
+     redirect '/wines'
+   end
     erb :'users/create_user'
   end
 
   get '/login' do
-    # if session[:user_id]
-    #    redirect '/wines'
-    #  end
+    if session[:user_id]
+       redirect '/wines'
+     end
     erb :'users/login'
   end
 
@@ -20,10 +20,15 @@ class UserController < ApplicationController
     @user = User.find_by(:username => params[:username])
     if @user && @user.authenticate(params[:password])
     session[:user_id]= @user.id
-    redirect '/wines'
+    redirect "/users/#{@user.id}"
  else
     redirect '/login'
   end
+  end
+
+  get '/users/:id' do
+    @current_user = User.find_by_id(params[:id])
+    erb :'/users/show'
   end
 
 
@@ -54,16 +59,6 @@ class UserController < ApplicationController
   end
 
 
-  helpers do
-    def current_user
-      if session[:user_id]
-      @current_user ||= User.find(session[:user_id])
-    end
-  end
 
-    def is_logged_in?
-      !!current_user
-    end
-  end
 
 end

@@ -15,7 +15,7 @@
   body {
     background-color: lightgrey;
     color: #333;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Inconsolata', monospace;
     line-height: 18px;
   }
 
@@ -31,9 +31,10 @@
   }
 
   h1 {
-    font-size: 42px;
+    font-size: 60px;
     line-height: 54px;
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Lobster', cursive;
+    color: lightpink;
 
   }
 
@@ -42,7 +43,8 @@
     font-size: 24px;
     line-height: 36px;
     margin-bottom: 16px;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Lobster', cursive;
+
 
   }
 
@@ -53,7 +55,10 @@
 
   p {
     margin-bottom: 18px;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Inconsolata', monospace;
+    color: lightgrey;
+    font-size: 18px;
+
 
   }
 
@@ -110,12 +115,38 @@
   }
 
   h1 {
-    font-size: 36px;
+    font-size: 60px;
     line-height: 36px;
   }
 
   h2 {
     font-size: 18px;
     line-height: 24px;
+  }
+
+74
+down vote
+accepted
+This is perfectly possible to do with just CSS (2.1):
+
+ol.custom {
+  list-style-type: none;
+  margin-left: 5;
+}
+
+ol.custom > li {
+  counter-increment: customlistcounter;
+}
+
+ol.custom > li:before {
+  content: counter(customlistcounter) " ";
+  font-family: 'Lobster', cursive;
+
+  float: left;
+  width: 3em;
+}
+
+ol.custom:first-child {
+  counter-reset: customlistcounter;
   }
 }
