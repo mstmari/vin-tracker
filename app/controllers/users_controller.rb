@@ -45,7 +45,7 @@ class UserController < ApplicationController
 
     else @current_user = User.create(params)
         session[:user_id]= @current_user.id
-        redirect '/wines'
+        redirect "/users/#{@current_user.id}"
       end
   end
 

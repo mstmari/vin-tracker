@@ -56,7 +56,7 @@ class WineController < ApplicationController
       if @wine.name.empty?
       redirect "/wines/#{@tweet.id}/edit"
     end
-    @wine.update(name: params[:name])
+    @wine.update(name: params[:name])if @wine.user == current_user
     @wine.save
     redirect "/wines/#{@wine.id}"
 
