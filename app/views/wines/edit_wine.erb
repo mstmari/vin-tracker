@@ -1,7 +1,8 @@
-<h1>Hey.</h1>
+<h1>What could you possibly need to change?</h1><br>
 <p><%=@wine.name %></p>
 <form action="/wines/<%=@wine.id%>" method="POST">
   <input type="hidden" name="_method" value="PATCH">
   <p>Edit Wine:<input type="text" name="name" id="name" placeholder="<%=@wine.name%>">
     <input type="submit" value="submit"><br>
   </form>
+  <br><p><a href="/users/<%= @wine.user_id %>">Back to My Profile</a></p>

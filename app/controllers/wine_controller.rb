@@ -28,6 +28,7 @@ class WineController < ApplicationController
     end
   end
 
+
   post '/wines' do
     is_logged_in?
     if params[:name].empty?
@@ -61,10 +62,12 @@ class WineController < ApplicationController
     end
     @wine.update(name: params[:name])if @wine.user == current_user
     @wine.save
-    redirect "/wines/#{@wine.id}"
+    redirect "/wines"
 
   end
   end
+
+
 
   delete '/wines/:id/delete' do
   if

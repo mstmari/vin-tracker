@@ -20,7 +20,7 @@ class UserController < ApplicationController
   end
 
   post '/login' do
-    flash[:message] = "Successfully created song."
+    #flash[:message] = "Successfully created song."
     @user = User.find_by(:username => params[:username])
     if @user && @user.authenticate(params[:password])
     session[:user_id]= @user.id
@@ -29,6 +29,7 @@ class UserController < ApplicationController
     redirect "/users/#{@user.id}"
 
  else
+    flash[:message] = "Incorrect Login Information"
     redirect '/login'
   end
   end
@@ -39,9 +40,12 @@ class UserController < ApplicationController
   end
 
 
+  
+
   post '/signup' do
     if params[:username].empty? || params[:email].empty? || params[:password].empty?
-     redirect "/signup"
+    flash[:message] = "You Must Complete All Fields"
+    redirect "/signup"
 
    else @current_user = User.create(params)
         session[:user_id]= @current_user.id

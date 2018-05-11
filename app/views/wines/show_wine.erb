@@ -10,3 +10,12 @@
   <input type="submit" value="Delete Wine">
 </form>
 <% end %>
+<br>
+<% if @wine.user_id == @user.id %>
+<form action="/wines/<%= @wine.id %>/edit" method="GET">
+  <input type="submit" value="Edit Wine">
+</form>
+<% end %>
+
+
+<p><a href="/users/<%= current_user.id %>">Back to My Profile</a></p>
