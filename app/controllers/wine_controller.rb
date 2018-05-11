@@ -1,3 +1,5 @@
+
+
 class WineController < ApplicationController
 
   get '/wines' do
@@ -33,6 +35,7 @@ class WineController < ApplicationController
     else @wine = Wine.create(params)
     end
     current_user.wines << @wine
+    flash[:message] = "Successfully added wine."
 
     redirect "/users/#{current_user.id}"
   end

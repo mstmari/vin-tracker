@@ -1,9 +1,12 @@
-<h1>Here is your new wine, <%= @user.username %></h1>
+<h1>Here is the wine, <%= @user.username %></h1>
 <br>
 <h3><a href="/wines/<%= @wine.id %>"><%= @wine.name %></a></h3>
+<% @wine_owner = User.find(@wine.user_id) %>
+<p>Added by <%= @wine_owner.username %></p>
 
-
+<% if @wine.user_id == @user.id %>
 <form action="/wines/<%= @wine.id %>/delete" method="POST">
   <input type="hidden" id="hidden" name="_method" value="DELETE">
   <input type="submit" value="Delete Wine">
 </form>
+<% end %>
