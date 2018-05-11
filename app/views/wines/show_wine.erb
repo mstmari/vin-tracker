@@ -1,3 +1,9 @@
 <h1>Here is your new wine, <%= @user.username %></h1>
 <br>
 <h3><a href="/wines/<%= @wine.id %>"><%= @wine.name %></a></h3>
+
+
+<form action="/wines/<%= @wine.id %>/delete" method="POST">
+  <input type="hidden" id="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Wine">
+</form>

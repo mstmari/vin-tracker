@@ -63,5 +63,15 @@ class WineController < ApplicationController
   end
   end
 
+  delete '/wines/:id/delete' do
+  if
+      !is_logged_in?
+      redirect '/login'
+  else
+    @wine = Wine.find_by_id(params[:id])
+    @wine.destroy if @wine.user == current_user
+    redirect '/wines'
+  end
+  end
 
 end
