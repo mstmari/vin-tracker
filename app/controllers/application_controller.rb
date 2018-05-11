@@ -6,6 +6,7 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     enable :sessions
     set :session_secret, "secret"
+
   end
 
   configure do
@@ -14,10 +15,13 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
+    flash[:notice] = "Hooray, Flash is working!"
+
     erb :index
   end
 
   helpers do
+
     def current_user
       if session[:user_id]
       @current_user ||= User.find(session[:user_id])

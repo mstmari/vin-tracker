@@ -1,6 +1,5 @@
 class UserController < ApplicationController
 
-
   get '/signup' do
 
   if session[:user_id]
@@ -33,19 +32,12 @@ class UserController < ApplicationController
 
 
   post '/signup' do
+    if params[:username].empty? || params[:email].empty? || params[:password].empty?
+     redirect "/signup"
 
-    if params[:username].empty?
-       redirect '/signup'
-
-    elsif params[:email].empty?
-        redirect '/signup'
-
-    elsif params[:password].empty?
-        redirect '/signup'
-
-    else @current_user = User.create(params)
+   else @current_user = User.create(params)
         session[:user_id]= @current_user.id
-        redirect "/users/#{@current_user.id}"
+        redirect "/wines"
       end
   end
 
