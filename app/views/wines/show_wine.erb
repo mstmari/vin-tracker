@@ -1,6 +1,7 @@
 <h1>Here is the wine, <%= @user.username %></h1>
 <br>
-<h3><a href="/wines/<%= @wine.id %>"><%= @wine.name %></a></h3>
+<h3><%= @wine.name %></h3>
+
 <% @wine_owner = User.find(@wine.user_id) %>
 <p>Added by <%= @wine_owner.username %></p>
 
@@ -16,6 +17,7 @@
   <input type="submit" value="Edit Wine">
 </form>
 <% end %>
+<br>
 
-
+<p><a href="/wines"> Back to the Wines</a></p>
 <p><a href="/users/<%= current_user.id %>">Back to My Profile</a></p>

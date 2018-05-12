@@ -127,11 +127,6 @@
     line-height: 24px;
   }
 
-74
-down vote
-accepted
-This is perfectly possible to do with just CSS (2.1):
-
 ol.custom {
   list-style-type: none;
   margin-left: 5;

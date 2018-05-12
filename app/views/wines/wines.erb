@@ -1,7 +1,10 @@
 <h1>Your Favorite Wines</h1>
 <br>
-<% Wine.all.each do |wine| %>
 <ol>
+<% Wine.all.each do |wine| %>
   <li><a href="/wines/<%= wine.id %>"><%= wine.name %></a></li>
   <% end %>
 </ol>
+<br>
+
+<p><a href="/users/<%= current_user.id %>">Back to My Profile</a></p>

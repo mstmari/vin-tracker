@@ -28,6 +28,8 @@ class WineController < ApplicationController
     end
   end
 
+  
+
 
   post '/wines' do
     is_logged_in?
