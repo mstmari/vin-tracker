@@ -44,10 +44,14 @@ class UserController < ApplicationController
     if params[:username].empty? || params[:email].empty? || params[:password].empty?
     flash[:message] = "You Must Complete All Fields"
     redirect "/signup"
+elsif !params[:email].match /@/
+  flash[:message] = "Invalid Email"
+
+  redirect "/signup"
 
    else @current_user = User.create(params)
         session[:user_id]= @current_user.id
-        redirect "/wines"
+        redirect "/users/#{@current_user.id}"
       end
   end
 
