@@ -19,8 +19,9 @@ class UserController < ApplicationController
     erb :'users/login'
   end
 
+
+
   post '/login' do
-    #flash[:message] = "Successfully created song."
     @user = User.find_by(:username => params[:username])
     if @user && @user.authenticate(params[:password])
     session[:user_id]= @user.id
@@ -63,7 +64,6 @@ elsif !params[:email].match /@/
     redirect '/'
   end
   end
-
 
 
 
