@@ -18,6 +18,7 @@ class WineController < ApplicationController
     erb :'/wines/sample'
   end
 end
+
   get '/wines/new' do
     if  is_logged_in?
       erb :'wines/create_wine'

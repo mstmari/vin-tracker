@@ -7,6 +7,8 @@ class UserController < ApplicationController
   get '/signup' do
 
   if session[:user_id]
+    flash[:message] = "You're already logged in!"
+
      redirect '/wines'
    end
     erb :'users/create_user'
@@ -14,6 +16,8 @@ class UserController < ApplicationController
 
   get '/login' do
     if session[:user_id]
+      flash[:message] = "You're already logged in!"
+
        redirect '/wines'
      end
     erb :'users/login'
@@ -45,7 +49,7 @@ class UserController < ApplicationController
     if params[:username].empty? || params[:email].empty? || params[:password].empty?
     flash[:message] = "You Must Complete All Fields"
     redirect "/signup"
-elsif !params[:email].match /@/
+  elsif !params[:email].match /@/
   flash[:message] = "Invalid Email"
 
   redirect "/signup"
