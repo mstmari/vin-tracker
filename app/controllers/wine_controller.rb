@@ -51,10 +51,14 @@ end
   end
 
   get '/wines/:id/edit' do
+    @wine = Wine.find_by_id(params[:id])
+
     if  !is_logged_in?
       redirect '/login'
+    elsif
+      @wine.user_id != current_user.id
+      redirect '/wines'
     else
-      @wine = Wine.find_by_id(params[:id])
       erb :'/wines/edit_wine'
     end
   end
@@ -67,7 +71,7 @@ end
   else
     @wine = Wine.find(params[:id])
       if @wine.name.empty?
-      redirect "/wines/#{@tweet.id}/edit"
+      redirect "/wines/#{@wine.id}/edit"
     end
     @wine.update(name: params[:name])if @wine.user == current_user
     @wine.save
